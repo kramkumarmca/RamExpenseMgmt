@@ -1,0 +1,145 @@
+
+	<ion-view view-title="Search" cache-view="true">	
+    <ion-content style="background-color:rgba(56, 126, 245, 0.09)">
+	<form class="ui form">
+	<div class="list">
+	<br>
+	<table style="width:100%"><tr><td style="text-align:left">
+	<input id="byNameSearch" type="checkbox" class="regular-checkbox big-checkbox" ng-model="search.byName" ng-true-value="true" ng-false-value="false" 
+	ng-click="search.byDate = false;search.byHow = false;search.byBDate = false" ng-checked="search.byName == true" style="width:150px;">
+	<label for="byNameSearch" style="width:150px;">By Name</label></td><td style="text-align:right">
+	<input id="byDateSearch" type="checkbox" class="regular-checkbox big-checkbox" ng-model="search.byDate" ng-true-value="true" ng-false-value="false" 
+	ng-click="search.byName = false;search.byHow = false;search.byBDate = false" ng-checked="search.byDate == true">
+	<label for="byDateSearch" style="width:150px;">By Date</label></td></tr><tr><td style="text-align:left"><br>
+	<input id="byHowSearch" type="checkbox" class="regular-checkbox big-checkbox" ng-model="search.byHow" ng-true-value="true" ng-false-value="false" 
+	ng-click="search.byDate = false;search.byName = false;search.byBDate = false" ng-checked="search.byHow == true">
+	<label for="byHowSearch" style="width:150px;">By How/ Where</label></td><td style="text-align:right"><br>
+	<input id="byBDateSearch" type="checkbox" class="regular-checkbox big-checkbox" ng-model="search.byBDate" ng-true-value="true" ng-false-value="false" 
+	ng-click="search.byDate = false;search.byHow = false;search.byName = false" ng-checked="search.byBDate == true">
+	<label for="byBDateSearch" style="width:150px;">By Between Date</label></td></tr></table>
+	
+	<br><br>
+	<div id="byNameSearch" ng-if="search.byName">
+	<div class="field">
+	<label for="s_firstname">
+	First Name
+	</label>
+	<input type="text" id="s_firstname" placeholder="First Name" ng-model="search_firstname">
+	</div>
+	<div class="field">
+	<label for="s_lastname">
+	Last Name
+	</label>
+	<input type="text" id="s_lasttname" placeholder="First Name" ng-model="search_lastname">
+	</div>
+	
+	<button class="fluid ui button" ng-click="searchFunction('Name',search_firstname, search_lastname)">Search Record </button><br>
+	
+	</div>
+	
+	<div id="byDateSearch" ng-if="search.byDate">
+	<div class="field">
+	<label for="s_date">
+	Date
+	</label>
+	<input type="date" id="s_date" placeholder="Date" ng-model="search_exdate">
+	</div>
+	
+	<button class="fluid ui button" ng-click="searchFunction('Date',search_exdate,'')">Search Record </button><br>
+	</div>
+	
+	<div id="byHowSearch" ng-if="search.byHow">
+	<div class="field">
+	<label for="s_how">
+	How
+	</label>
+	<input type="text" id="s_how" placeholder="How?" ng-model="search_how">
+	</div>
+	
+	<div class="field">
+	<label for="s_where">
+	Where
+	</label>
+	<input type="text" id="s_where" placeholder="Where?" ng-model="search_where">
+	</div>
+	
+	<button class="fluid ui button" ng-click="searchFunction('How',search_how,search_where)">Search Record </button><br>
+	</div>
+	
+	<div id="byBDateSearch" ng-if="search.byBDate">
+	<div class="field">
+	<label for="s_date1">
+	From Date
+	</label>
+	<input type="date" id="s_date1" placeholder="Date" ng-model="search_exdate1">
+	</div>
+	<div class="field">
+	<label for="s_date2">
+	To Date
+	</label>
+	<input type="date" id="s_date2" placeholder="Date" ng-model="search_exdate2">
+	</div>
+	
+	<button class="fluid ui button" ng-click="searchFunction('BDate',search_exdate1,search_exdate2)">Search Record </button><br>
+	</div>
+	
+		
+		<div class="row header">
+		  <div class="col"></div>
+		  <div class="col"></div>
+          <div class="col">Name</div>
+          <div class="col">Amount</div>
+          <div class="col">Purchased Date</div>
+        </div>
+        <div class="row" ng-repeat-start="dataModel in allSessions">
+		  <div class="col">
+			<img ng-src="img/minus.png" 
+				 ng-if="dataModel.expanded" ng-click="dataModel.expanded = false" style="width: 24px; height: 24px;">
+			<img ng-src="img/plus.png" 
+				 ng-if="!dataModel.expanded" ng-click="dataModel.expanded = true" style="width: 24px; height: 24px;">
+			
+		  </div>
+		  <div class="col">
+			<img ng-src="img/Delete.png" 
+				 ng-click="deleteRecord(dataModel.id)" style="width: 24px; height: 24px;">
+		  </div>
+          <div class="col">{{dataModel.firstname}} &nbsp; {{dataModel.lastname}}</div>
+          <div class="col">{{dataModel.amount}}</div>
+          <div class="col"><a ui-sref="Update" ui-sref-active="active" ng-click="idset(dataModel.id)">{{dataModel.exdate | date: "yyyy-MM-dd"}}</a></div>
+        </div>
+		
+		<div class="row" ng-if="dataModel.expanded">
+            <div class="col">Amount</div>
+			<div class="col">{{dataModel.amount}}</div>
+        </div>
+		
+		<div class="row" ng-if="dataModel.expanded">
+            <div class="col">Where</div>
+			<div class="col">{{dataModel.fwhere}}</div>
+        </div>
+		
+		<div class="row" ng-if="dataModel.expanded">
+            <div class="col">How</div>
+			<div class="col">{{dataModel.fhow}}</div>
+        </div>
+		
+		<div class="row" ng-if="dataModel.expanded" ng-repeat-end="">
+            <div class="col">Reason</div>
+			<div class="col">{{dataModel.freason}}</div>
+        </div>
+		
+		<div class="row">
+            <div class="col">Total Amount Spent</div>
+			<div class="col">{{totalAmount}}</div>
+        </div>
+	
+	
+	
+	
+	
+	</div>
+	
+	</form>
+    </ion-content>
+</ion-view>
+

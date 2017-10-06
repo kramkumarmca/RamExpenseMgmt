@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+	<link href="css/Semantic.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet">
+	
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+	
+	
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+	
+	<!-- Chart Instaniate --> 
+	
+	<script src="js/Chart.min.js"></script>	 
+	<script src="js/angular-chart.min.js"></script>
+
+	<!-- SQL Lite -->
+	<script src="js/ng-cordova.min.js"></script>
+	
+	
+	
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+	
+	
+	
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/require.js"></script>
+	
+	
+	<script type="text/javascript">
+	var sid = "";
+	function messageBox(str1){alert(str1);}
+	
+	function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+	
+	</script>
+	
+  </head>
+  <body ng-app="starter" ng-controller="myCtrl as $ctrl">
+  
+	
+	<ion-side-menus ng-controller="myCtrl">
+      <ion-side-menu-content>
+          <ion-nav-bar class="bar-positive" align-title="center">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+              
+            </ion-nav-buttons>
+          </ion-nav-bar>
+        <ion-nav-view>
+		
+		</ion-nav-view>
+      </ion-side-menu-content>
+    </ion-side-menus>
+	
+	<!--<ion-header>
+	<ion-nav-bar color="primary">	
+		
+			
+	
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Ram Expenditure Mgmt</h1>		
+      </ion-header-bar>
+	</ion-nav-bar>
+	</ion-header>-->
+	  
+	
+	
+	
+  </body>
+</html>
+	
+	
+	

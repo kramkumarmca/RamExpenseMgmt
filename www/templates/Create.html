@@ -1,0 +1,86 @@
+
+	<ion-view view-title="Create">	
+    <ion-content  style="background-color:rgba(56, 126, 245, 0.09)">
+	<form class="ui form" name="myForm">
+	<div class="list">
+	<div class="field">
+	<label for="firstname">
+	First Name
+	</label>
+	<input type="text" id="firstname" name="firstname" placeholder="First Name" ng-model="$ctrl.firstname" required>
+	<span style="color:red" ng-show="myForm.firstname.$dirty && myForm.firstname.$invalid">
+<span ng-show="myForm.firstname.$error.required">Firstname is required.</span>
+</span>
+	</div>
+	
+	<div class="field">
+	<label for="lastname">
+	Last Name
+	</label>
+	<input type="text" id="lastname" name="lastname" placeholder="Last Name" ng-model="$ctrl.lastname" required>
+	<span style="color:red" ng-show="myForm.lastname.$dirty && myForm.lastname.$invalid">
+	<span ng-show="myForm.lastname.$error.required">Lastname is required.</span>
+	</span>
+	</div>
+	
+	<div class="field">
+	<label for="amount">
+	Amount
+	</label>
+	<input type="number" id="amount" name="amount" placeholder="Amount" ng-model="$ctrl.amount" required>
+	<span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
+	<span ng-show="myForm.amount.$error.required">Amount is required.</span>
+	</span>
+	</div>
+	
+	<div class="field">
+	<label for="exdate">Date of Purchase
+	</label>
+	<input placeholder="Date/Time" name="input" type="date" id="exdate" min="2000-01-01" max="2100-12-31" ng-model="$ctrl.exdate" required>
+	<span style="color:red" ng-show="myForm.input.$dirty && myForm.input.$invalid">
+	<span ng-show="myForm.input.$error.required">Date of Purchase is required.</span>
+	</span>
+	</div>
+	
+	<div class="field">
+	<label for="where">
+	Purchased at
+	</label>
+	<input type="text" id="where" placeholder="Where???" ng-model="$ctrl.where">
+	
+	</div>
+	
+	<div class="field">
+	<label for="how">
+	Purchased using
+	</label>
+	<input type="text" id="how" name="how" placeholder="how?" ng-model="$ctrl.how" required>
+	
+	<span style="color:red" ng-show="myForm.how.$dirty && myForm.how.$invalid">
+	<span ng-show="myForm.how.$error.required">How the puchase is made is required.</span>
+	</span>
+	
+	</div>
+	
+	<div class="field">
+	<label for="reason">
+	Reason/ Comments any
+	</label>
+	<textarea type="text" id="reason" placeholder="Reason/ Comments" ng-model="$ctrl.reason"></textarea>
+	</div>
+	
+	<button class="fluid ui button" ng-click="$ctrl.insert()" 
+	ng-disabled="
+	myForm.$invalid || 
+	myForm.myName.$pristine || 
+	myForm.firstname.$invalid && myForm.firstname.$dirty || 
+	myForm.lastname.$dirty && myForm.lastname.$invalid || 
+	myForm.amount.$dirty && myForm.amount.$invalid || 
+	myForm.how.$dirty && myForm.how.$invalid || 
+	myForm.input.$dirty && myForm.input.$invalid">Save Record </button><br>
+	<a ui-sref="Home" class="fluid ui button" ui-sref-active="active">Home</a> <br>
+	</list>
+	</form>
+    </ion-content>
+</ion-view>
+

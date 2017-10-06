@@ -1,0 +1,46 @@
+
+	
+<ion-view  view-title="Ram Expense Management">	
+    <ion-content style="background-color:rgba(56, 126, 245, 0.09)">
+        <div class="list">
+			
+			<br><br>
+			
+			<table style="width:100%"> <tr><td>
+			
+			<a ui-sref="Create"  ui-sref-active="active" ng-click="$ctrl.clearCreateData()">
+			
+			<img ng-src="img/create.png" 
+				 style="width: 50px; height: 50px;">
+			<br>Create Expenses
+			</a> <br><br></td><td>
+			<a ui-sref="Search"  ui-sref-active="active">
+			
+			<img ng-src="img/searchExpenses.jpg" 
+				 style="width: 50px; height: 50px;">
+			<br>Search Expenses
+			</a> <br></td></tr><tr><td><br><br>
+			<a ui-sref="Home" ui-sref-active="active" ng-click="$ctrl.deleteTable()">
+			
+			<img ng-src="img/Delete.png" 
+				 style="width: 50px; height: 50px;">
+			<br>Delete All Expenses
+			</a><br><br><br></td><td><br><br>
+			
+			<a ui-sref="Grid" ui-sref-active="active">
+			
+			<img ng-src="img/Report.png" 
+				 style="width: 50px; height: 50px;">
+			<br>Show All Expenses
+			</a> <br></td></tr><tr><td style="text:align:center" colspan="2"><br><br>
+			<a ui-sref="Charts" ui-sref-active="active">
+			
+			<img ng-src="img/graph.jpg" 
+				 style="width: 50px; height: 50px;">
+			<br>View Graph/ Charts
+			</a> <br></td></tr></table>
+        </div>
+	
+    </ion-content>
+</ion-view>
+

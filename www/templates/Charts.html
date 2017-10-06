@@ -1,0 +1,40 @@
+	
+<ion-view view-title="Charts">	
+    <ion-content style="background-color:rgba(56, 126, 245, 0.09)">
+	<form class="ui form" name="myForm">
+
+	<div class="list">
+	
+	<table style="width:100%"><tr><td style="text-align:center">
+	<input id="bycyear" type="checkbox" class="regular-checkbox big-checkbox" ng-model="search.cyear" ng-true-value="true" ng-false-value="false" 
+	ng-click="search.cyear1 = false;search.cyear2 = false;search.cyear = true;queryRe(cyear)" ng-checked="search.cyear == true">
+	<label for="bycyear">{{cyear}}</label></td><td style="text-align:center">
+	
+	<input id="bycyear1" type="checkbox" class="regular-checkbox big-checkbox" ng-model="search.cyear1" ng-true-value="true" ng-false-value="false" 
+	ng-click="search.cyear = false;search.cyear2 = false;search.cyear1 = true;queryRe(cyear1)" ng-checked="search.cyear1 == true">
+	<label for="bycyear1">{{cyear1}}</label></td><td style="text-align:center">
+	
+	<input id="bycyear2" type="checkbox" class="regular-checkbox big-checkbox" ng-model="search.cyear2" ng-true-value="true" ng-false-value="false" 
+	ng-click="search.cyear1 = false;search.cyear = false;search.cyear2 = true;queryRe(cyear2)" ng-checked="search.cyear2 == true">
+	<label for="bycyear2">{{cyear2}}</label></td></tr></table>
+	
+	</div>
+	
+	<div class="card">
+        <div class="item item-divider">
+            Line chart
+        </div>
+        
+            <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" legend="true" series="series" options="{showTooltips: true}"></canvas>
+       
+    </div>
+    <div class="card">
+        <div class="item item-divider">
+            Bar chart
+        </div>
+        <div class="item item-text-wrap">
+            <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" legend="true" series="series" options="{showTooltips: false}"></canvas>
+        </div>
+    </div>
+	</ion-content>
+</ion-view>

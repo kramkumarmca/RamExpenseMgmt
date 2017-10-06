@@ -1,0 +1,62 @@
+
+	
+	<ion-view view-title="All Data">	
+    <ion-content style="background-color:rgba(56, 126, 245, 0.09)">
+        <form class="ui form">		
+		<div class="row header">
+		  <div class="col"></div>
+		  <div class="col"></div>
+          <div class="col">Name</div>
+          <div class="col">Amount</div>
+          <div class="col">Purchased Date</div>
+        </div>
+        <div class="row" ng-repeat-start="dataModel in allSessions">
+		  <div class="col">
+			<img ng-src="img/minus.png" 
+				 ng-if="dataModel.expanded" ng-click="dataModel.expanded = false" style="width: 24px; height: 24px;">
+			<img ng-src="img/plus.png" 
+				 ng-if="!dataModel.expanded" ng-click="dataModel.expanded = true" style="width: 24px; height: 24px;">
+			
+		  </div>
+		  <div class="col">
+			<img ng-src="img/Delete.png" 
+				 ng-click="deleteRecord(dataModel.id)" style="width: 24px; height: 24px;">
+		  </div>
+          <div class="col">{{dataModel.firstname}} &nbsp; {{dataModel.lastname}}</div>
+          <div class="col">{{dataModel.amount}}</div>
+          <div class="col">{{dataModel.exdate}}</div>
+        </div>
+		
+		<div class="row" ng-if="dataModel.expanded">
+            <div class="col">Amount</div>
+			<div class="col">{{dataModel.amount}}</div>
+        </div>
+		
+		<div class="row" ng-if="dataModel.expanded">
+            <div class="col">Where</div>
+			<div class="col">{{dataModel.fwhere}}</div>
+        </div>
+		
+		<div class="row" ng-if="dataModel.expanded">
+            <div class="col">How</div>
+			<div class="col">{{dataModel.fhow}}</div>
+        </div>
+		
+		<div class="row" ng-if="dataModel.expanded" ng-repeat-end="">
+            <div class="col">Reason</div>
+			<div class="col">{{dataModel.freason}}</div>
+        </div>
+		
+		<div class="row">
+            <div class="col">Total Amount Spent</div>
+			<div class="col">{{totalAmount}}</div>
+        </div>
+		
+		</form>
+		
+		<a ui-sref="Home" class="fluid ui button" ui-sref-active="active">Home</a> <br>
+
+        
+    </ion-content>
+</ion-view>
+
